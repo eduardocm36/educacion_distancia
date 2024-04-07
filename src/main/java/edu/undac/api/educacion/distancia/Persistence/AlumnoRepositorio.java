@@ -8,6 +8,9 @@ import edu.undac.api.educacion.distancia.Persistence.Mappers.Mapper.StudentMappe
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+import java.util.Optional;
+
 @Repository
 public class AlumnoRepositorio implements StudentRepository {
 
@@ -18,8 +21,8 @@ public class AlumnoRepositorio implements StudentRepository {
     private StudentMapper mapper;
 
     @Override
-    public Student getAlumno(String code) {
-        Alumno alumno = alumnoCrudRepository.findByCodigo(code);
-         return mapper.toStudent(alumno);
+    public Optional<Student> getAlumno(String code) {
+        Optional<Alumno> result = alumnoCrudRepository.findByCodigo(code);
+        return result.map(alumno -> mapper.toStudent(alumno));
     }
 }

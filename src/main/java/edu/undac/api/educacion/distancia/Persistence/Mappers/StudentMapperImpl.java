@@ -11,7 +11,6 @@ public class StudentMapperImpl implements StudentMapper {
     @Override
     public Student toStudent(Alumno alumno) {
         Student student = new Student();
-
         student.setId(alumno.getIdAlumno());
         student.setCodigo(alumno.getCodigo());
         student.setNombre(alumno.getNombres());

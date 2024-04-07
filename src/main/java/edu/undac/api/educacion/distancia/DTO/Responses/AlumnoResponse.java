@@ -1,4 +1,4 @@
-package edu.undac.api.educacion.distancia.Models;
+package edu.undac.api.educacion.distancia.DTO.Responses;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
