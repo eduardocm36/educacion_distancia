@@ -1,20 +1,34 @@
 package edu.undac.api.educacion.distancia.Models;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 public class AlumnoResponse {
 
+    @JsonProperty("Apellido paterno")
     private String apePaterno;
+    @JsonProperty("Apellido materno")
     private String apeMaterno;
+    @JsonProperty("Nombres")
     private String nombres;
+    @JsonProperty("Correo Institucional")
     private String correo;// codigo@undac.edu.pe
+    @JsonProperty("Dni")
     private String dni; //codigo
+    @JsonProperty("Curricula")
     private String curricula;
+    @JsonProperty("Fecha de nacimiento")
     private String fechaNacimiento; //null
+    @JsonProperty("Programa facultad")
     private String especialidad;
+    private int creditos;
+    @JsonProperty("ID_ESCUELA")
     private String idEspecialidad;
+    @JsonProperty("Genero")
     private String genero; //
+    @JsonProperty("Domicilio")
     private String domicilio; //""
+    @JsonProperty("Rol")
     private String rol; //EG
-
 
     public String getApePaterno() {
         return apePaterno;
@@ -40,30 +54,6 @@ public class AlumnoResponse {
         this.nombres = nombres;
     }
 
-    public String getCurricula() {
-        return curricula;
-    }
-
-    public void setCurricula(String curricula) {
-        this.curricula = curricula;
-    }
-
-    public String getEspecialidad() {
-        return especialidad;
-    }
-
-    public void setEspecialidad(String especialidad) {
-        this.especialidad = especialidad;
-    }
-
-    public String getIdEspecialidad() {
-        return idEspecialidad;
-    }
-
-    public void setIdEspecialidad(String idEspecialidad) {
-        this.idEspecialidad = idEspecialidad;
-    }
-
     public String getCorreo() {
         return correo;
     }
@@ -80,12 +70,44 @@ public class AlumnoResponse {
         this.dni = dni;
     }
 
+    public String getCurricula() {
+        return curricula;
+    }
+
+    public void setCurricula(String curricula) {
+        this.curricula = curricula;
+    }
+
     public String getFechaNacimiento() {
         return fechaNacimiento;
     }
 
     public void setFechaNacimiento(String fechaNacimiento) {
         this.fechaNacimiento = fechaNacimiento;
+    }
+
+    public String getEspecialidad() {
+        return especialidad;
+    }
+
+    public void setEspecialidad(String especialidad) {
+        this.especialidad = especialidad;
+    }
+
+    public int getCreditos() {
+        return creditos;
+    }
+
+    public void setCreditos(int creditos) {
+        this.creditos = creditos;
+    }
+
+    public String getIdEspecialidad() {
+        return idEspecialidad;
+    }
+
+    public void setIdEspecialidad(String idEspecialidad) {
+        this.idEspecialidad = idEspecialidad;
     }
 
     public String getGenero() {

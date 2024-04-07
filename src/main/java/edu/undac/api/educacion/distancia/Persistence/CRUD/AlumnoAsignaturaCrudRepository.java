@@ -4,9 +4,10 @@ import edu.undac.api.educacion.distancia.Persistence.Entities.AlumnoAsignatura;
 import org.springframework.data.repository.CrudRepository;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface AlumnoAsignaturaCrudRepository extends CrudRepository<AlumnoAsignatura, Integer> {
 
-    List<AlumnoAsignatura> findByCodigoAlumno (String codigoAlumno);
+    Optional<List<AlumnoAsignatura>> findByCodigoAlumno (String codigoAlumno);
 
 }

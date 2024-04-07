@@ -10,6 +10,7 @@ import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Repository
 public class AlumnoAsignaturaRepositorio implements StudentSubjectRepository {
@@ -22,12 +23,9 @@ public class AlumnoAsignaturaRepositorio implements StudentSubjectRepository {
 
 
     @Override
-    public List<StudentSubject> getByAlumno(String codigoAlumno) {
-        List<StudentSubject> studentSubjects = new ArrayList<>();
-        List<AlumnoAsignatura> alumnoAsignaturas = alumnoAsignaturaCrudRepository.findByCodigoAlumno(codigoAlumno);
-        for(AlumnoAsignatura alumnoAsignatura : alumnoAsignaturas) {
-            studentSubjects.add(mapper.toStudentSubject(alumnoAsignatura));
-        }
-        return studentSubjects;
+    public Optional<List<StudentSubject>> getByAlumno(String codigoAlumno) {
+        Optional<List<AlumnoAsignatura>> alumnoAsignaturas = alumnoAsignaturaCrudRepository.findByCodigoAlumno(codigoAlumno);
+        return alumnoAsignaturas.map(alumnos -> alumnos
+                .stream().map(alumno -> mapper.toStudentSubject(alumno)).toList()).or(() -> Optional.empty());
     }
 }

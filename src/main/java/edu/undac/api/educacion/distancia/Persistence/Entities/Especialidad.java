@@ -25,9 +25,6 @@ public class Especialidad {
     @Column(name = "sed_codi")
     private Integer sedeCodigo;
 
-    @Column(name = "esp_pref")
-    private String espPref;
-
     @OneToMany(mappedBy = "especialidad")
     private List<Alumno> alumnos;
 
@@ -75,14 +72,6 @@ public class Especialidad {
 
     public void setSedeCodigo(Integer sedeCodigo) {
         this.sedeCodigo = sedeCodigo;
-    }
-
-    public String getEspPref() {
-        return espPref;
-    }
-
-    public void setEspPref(String espPref) {
-        this.espPref = espPref;
     }
 
     public List<Alumno> getAlumnos() {

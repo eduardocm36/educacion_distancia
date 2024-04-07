@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.swing.*;
+
 @RestController
 @RequestMapping("/alumno")
 public class StudentController {
@@ -20,7 +22,11 @@ public class StudentController {
 
     @GetMapping("/{code}")
     public ResponseEntity<AlumnoResponse> getByCode(@PathVariable("code") String code){
-        return new ResponseEntity<>(studentService.getStudent(code), HttpStatus.OK);
+        AlumnoResponse alumnoResponse = studentService.getAlumnoFromAPI(code);
+        if (alumnoResponse.getCurricula() == null){
+            alumnoResponse = studentService.getStudent(code);
+        }
+        return new ResponseEntity<>(alumnoResponse, HttpStatus.OK);
     }
 
 }
