@@ -29,10 +29,12 @@ public class AlumnoAsignaturaRepositorio implements StudentSubjectRepository {
     @Override
     public Optional<List<StudentSubject>> getByAlumno(String codigoAlumno) {
         Optional<List<AlumnoAsignatura>> alumnoAsignaturas = alumnoAsignaturaCrudRepository.findByCodigoAlumno(codigoAlumno);
+        Boolean condition = alumnoAsignaturas.filter(matriculas -> matriculas.isEmpty()).isPresent();
+        if (condition){
+            LOG.warn("No existe matrículas para este usuario");
+            return Optional.empty();
+        }
         return alumnoAsignaturas.map(alumnos -> alumnos
-                .stream().map(alumno -> mapper.toStudentSubject(alumno)).toList()).or(() -> {
-                    LOG.warn("No existe matrículas para este usuario");
-                    return Optional.empty();
-        });
+                .stream().map(alumno -> mapper.toStudentSubject(alumno)).toList());
     }
 }

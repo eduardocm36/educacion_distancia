@@ -31,5 +31,13 @@ public class ExceptionController {
                 HttpStatus.INTERNAL_SERVER_ERROR);
     }
 
+    /*@ExceptionHandler(NullPointerException.class)
+    public ResponseEntity<ExceptionDetails> nullPointerException (NullPointerException exception){
+        LOG.error(exception.getMessage());
+        return new ResponseEntity<>(new ExceptionDetails("Usuario sin matricula registrada"
+                , HttpStatus.INTERNAL_SERVER_ERROR.value()),
+                HttpStatus.INTERNAL_SERVER_ERROR);
+    }*/
+
 
 }

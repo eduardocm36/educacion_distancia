@@ -29,8 +29,8 @@ public class StudentController {
             alumnoResponse = studentService.getStudent(code);
         }
         return alumnoResponse.map(alumnoResponse1 -> new ResponseEntity<>(alumnoResponse1, HttpStatus.OK))
-                .orElseThrow(() -> new DistanceException("El código ingresado no existe",
-                        new ExceptionDetails("Codigo inexistente", HttpStatus.NOT_FOUND.value())));
+                .orElseThrow(() -> new DistanceException("Not found code",
+                        new ExceptionDetails("Usuario no encontrado", HttpStatus.NOT_FOUND.value())));
     }
 
 }
